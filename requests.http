@@ -1,0 +1,48 @@
+# примеры API-запросов
+# 604b5fe47c8762e0ec51ac84e4374f1e5cc0f8f6 - АДМИНСКИЙ ТОКЕН
+# 4ccc15aef50e4be7daad610e5cf21c6ac078ba78 - ТОКЕН ПОЛЬЗОВАТЕЛЯ
+###
+
+# получение списка товаров
+GET http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+###
+# создание товара
+POST http://localhost:8000/api/v1/products/
+Content-Type: application/json
+Authorization: Token 604b5fe47c8762e0ec51ac84e4374f1e5cc0f8f6
+
+{
+  "title": "Nokia 3310",
+  "description": "Кирпич",
+  "price": 2000
+}
+
+###
+
+# попытка поменять товар
+PATCH http://localhost:8000/api/v1/products/1/
+Content-Type: application/json
+Authorization: Token 4ccc15aef50e4be7daad610e5cf21c6ac078ba78
+
+{
+  "title": "Шкаф IKEA",
+  "description": "TEST",
+  "price": 1245678
+}
+
+###
+
+# удалить товар
+DELETE http://localhost:8000/api/v1/products/8/
+Content-Type: application/json
+Authorization: Token 604b5fe47c8762e0ec51ac84e4374f1e5cc0f8f6
+
+###
+
+# фильтрация по ценовой политике
+GET http://localhost:8000/api/v1/products?min_price=2000&max_price=79990
+Content-Type: application/json
+
+###
