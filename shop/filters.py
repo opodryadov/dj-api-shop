@@ -1,12 +1,9 @@
 from django_filters import rest_framework as filters
 from django.contrib.auth.models import User
-
 from shop.models import Product, Review
 
 
 class ProductFilter(filters.FilterSet):
-    """Фильтры для товаров"""
-
     min_price = filters.NumberFilter(field_name='price', lookup_expr='gte')
     max_price = filters.NumberFilter(field_name='price', lookup_expr='lte')
     name = filters.CharFilter(field_name='name', lookup_expr='contains')
@@ -18,8 +15,6 @@ class ProductFilter(filters.FilterSet):
 
 
 class ReviewFilter(filters.FilterSet):
-    """Фильтры для отзывов"""
-
     creator = filters.ModelChoiceFilter(
         field_name="creator",
         to_field_name="id",
