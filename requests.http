@@ -1,33 +1,34 @@
 # примеры API-запросов
-# 604b5fe47c8762e0ec51ac84e4374f1e5cc0f8f6 - АДМИНСКИЙ ТОКЕН
-# 4ccc15aef50e4be7daad610e5cf21c6ac078ba78 - ТОКЕН ПОЛЬЗОВАТЕЛЯ
+# a0a0532fb60cd48d9bd6d563eb3b40cb0e5abe27 - АДМИНСКИЙ ТОКЕН
+# e968a27e10e4d0589cbc9035625b1e84345f5d85 - ТОКЕН ПОЛЬЗОВАТЕЛЯ
 ###
 
 # получение списка товаров
 GET http://localhost:8000/api/v1/products/
 Content-Type: application/json
+#Authorization: Token e968a27e10e4d0589cbc9035625b1e84345f5d85
 
 ###
 # создание товара
 POST http://localhost:8000/api/v1/products/
 Content-Type: application/json
-Authorization: Token 604b5fe47c8762e0ec51ac84e4374f1e5cc0f8f6
+Authorization: Token a0a0532fb60cd48d9bd6d563eb3b40cb0e5abe27
 
 {
-  "title": "Nokia 3310",
-  "description": "Кирпич",
-  "price": 2000
+  "name": "iPhone X",
+  "description": "256GB",
+  "price": 80000
 }
 
 ###
 
 # попытка поменять товар
-PATCH http://localhost:8000/api/v1/products/1/
+PATCH http://localhost:8000/api/v1/products/6/
 Content-Type: application/json
-Authorization: Token 4ccc15aef50e4be7daad610e5cf21c6ac078ba78
+Authorization: Token a0a0532fb60cd48d9bd6d563eb3b40cb0e5abe27
 
 {
-  "title": "Шкаф IKEA",
+  "name": "Шкаф IKEA",
   "description": "TEST",
   "price": 1245678
 }
@@ -35,14 +36,52 @@ Authorization: Token 4ccc15aef50e4be7daad610e5cf21c6ac078ba78
 ###
 
 # удалить товар
-DELETE http://localhost:8000/api/v1/products/8/
+DELETE http://localhost:8000/api/v1/products/1/
 Content-Type: application/json
-Authorization: Token 604b5fe47c8762e0ec51ac84e4374f1e5cc0f8f6
+Authorization: Token a0a0532fb60cd48d9bd6d563eb3b40cb0e5abe27
 
 ###
 
 # фильтрация по ценовой политике
 GET http://localhost:8000/api/v1/products?min_price=2000&max_price=79990
 Content-Type: application/json
+
+###
+
+# оставить отзыв о товаре
+POST http://localhost:8000/api/v1/product-reviews/
+Content-Type: application/json
+Authorization: Token e968a27e10e4d0589cbc9035625b1e84345f5d85
+
+{
+  "product": 7,
+  "text": "Отличный смартфон! Советую к покупке!",
+  "rating": 5
+}
+###
+
+# получить отзывы о товарах
+GET http://localhost:8000/api/v1/product-reviews/
+Content-Type: application/json
+
+###
+
+# изменить отзыв о товаре
+PATCH http://localhost:8000/api/v1/product-reviews/11/
+Content-Type: application/json
+Authorization: Token 4ccc15aef50e4be7daad610e5cf21c6ac078ba78
+
+{
+  "product": 14,
+  "text": "Попытка изменить чужой отзыв111111",
+  "mark": 5
+}
+
+###
+
+# удалить отзыв о товаре
+DELETE http://localhost:8000/api/v1/product-reviews/1/
+Content-Type: application/json
+Authorization: Token e968a27e10e4d0589cbc9035625b1e84345f5d85
 
 ###
