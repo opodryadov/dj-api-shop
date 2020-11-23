@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
 
     'shop',
+    'review',
 ]
 
 MIDDLEWARE = [
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'django_diplom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shop_django_diplom',
+        'NAME': 'dj_diplom_shop',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
