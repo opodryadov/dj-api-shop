@@ -32,4 +32,3 @@ class Review(models.Model):
 
     def __str__(self):
         return "Отзыв от %s на %s " % (self.creator, self.product)
-

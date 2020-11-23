@@ -19,6 +19,7 @@ class RewiewPermissions(permissions.BasePermission):
         if request.method == 'DELETE' or request.method == 'PUT' or request.method == 'PATCH':
             if request.user.is_authenticated:
                 pass
+                # print(Review.objects.all())
                 # Вот тут мы описываем условие отбора отзыва (как проверить пользователя, что отзыв принадлежит ему??)
                 # if request.user == view.queryset._result_cache.creator:
                 #     return True
