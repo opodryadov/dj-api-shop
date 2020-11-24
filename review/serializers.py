@@ -29,7 +29,8 @@ class ReviewSerializer(serializers.ModelSerializer):
     def validate(self, data):
         user_name = self.context["request"].user
         product_id = self.context["request"].data["product"]
+        method = self.context["request"].stream.method
         reviews = Review.objects.filter(product=product_id).filter(creator=user_name).count()
-        if reviews:
+        if reviews and method == 'POST':
             raise ValidationError({"Error": "Нельзя оставлять более одного отзыва на один товар!"})
         return data

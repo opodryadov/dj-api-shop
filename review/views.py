@@ -6,7 +6,7 @@ from review.models import Review
 from review.serializers import ReviewSerializer
 
 
-class RewiewPermissions(permissions.BasePermission):
+class ReviewPermissions(permissions.BasePermission):
 
     def has_permission(self, request, view):
         if request.method == 'GET':
@@ -18,13 +18,12 @@ class RewiewPermissions(permissions.BasePermission):
                 return False
         if request.method == 'DELETE' or request.method == 'PUT' or request.method == 'PATCH':
             if request.user.is_authenticated:
-                pass
-                # print(Review.objects.all())
-                # Вот тут мы описываем условие отбора отзыва (как проверить пользователя, что отзыв принадлежит ему??)
-                # if request.user == view.queryset._result_cache.creator:
-                #     return True
-                # else:
-                #     return False
+                review = Review.objects.get(id=request.parser_context['kwargs']['pk'])
+                new_review = Review.objects.get(product=request.data['product'], creator=request.user)
+                if review.id == new_review.id and review.creator.username == new_review.creator.username:
+                    return True
+                else:
+                    return False
             else:
                 return False
 
@@ -32,6 +31,6 @@ class RewiewPermissions(permissions.BasePermission):
 class ReviewViewSet(ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = (RewiewPermissions, )
+    permission_classes = (ReviewPermissions, )
     filter_backends = [DjangoFilterBackend]
     filterset_class = ReviewFilter
