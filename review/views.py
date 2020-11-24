@@ -16,6 +16,7 @@ class ReviewPermissions(permissions.BasePermission):
                 return True
             else:
                 return False
+        # TODO: реализовать метод DELETE и PUT
         if request.method == 'DELETE' or request.method == 'PUT' or request.method == 'PATCH':
             if request.user.is_authenticated:
                 review = Review.objects.get(id=request.parser_context['kwargs']['pk'])

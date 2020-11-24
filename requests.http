@@ -73,7 +73,7 @@ Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 {
   "product": 1,
   "text": "Хороший смартфон, но очень дорогой.",
-  "rating": 3
+  "rating": 4
 }
 
 ###
@@ -83,4 +83,25 @@ DELETE http://localhost:8000/api/v1/product-reviews/1/
 Content-Type: application/json
 Authorization: Token e968a27e10e4d0589cbc9035625b1e84345f5d85
 
+###
+
+# получить заказы
+GET http://localhost:8000/api/v1/orders/
+Content-Type: application/json
+
+###
+
+# отправить заказ
+POST http://localhost:8000/api/v1/orders/
+Content-Type: application/json
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+
+{
+  "position_orders": [
+    {
+      "product_id": 1,
+      "quantity": 2
+    }
+  ]
+}
 ###
