@@ -26,10 +26,6 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ('id', 'creator', 'position_orders', 'status',)
         read_only_fields = ('creator',)
 
-    def get_user(self, validated_data):
-        validated_data["creator"] = self.context["request"].user
-        return super().create(validated_data)
-
     def create(self, validated_data):
         validated_data["creator"] = self.context["request"].user
         order_product = validated_data.pop("position_orders")
