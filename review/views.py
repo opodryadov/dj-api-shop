@@ -16,12 +16,10 @@ class ReviewPermissions(permissions.BasePermission):
                 return True
             else:
                 return False
-        # TODO: реализовать метод DELETE и PUT
-        if request.method == 'DELETE' or request.method == 'PUT' or request.method == 'PATCH':
+        if request.method == 'PUT' or request.method == 'PATCH' or request.method == 'DELETE':
             if request.user.is_authenticated:
                 review = Review.objects.get(id=request.parser_context['kwargs']['pk'])
-                new_review = Review.objects.get(product=request.data['product'], creator=request.user)
-                if review.id == new_review.id and review.creator.username == new_review.creator.username:
+                if review.creator.username == request.user.username:
                     return True
                 else:
                     return False

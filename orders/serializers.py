@@ -23,7 +23,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('id', 'creator', 'position_orders', 'status',)
+        fields = ('id', 'creator', 'position_orders', 'amount', 'status',)
         read_only_fields = ('creator',)
 
     def create(self, validated_data):
@@ -37,5 +37,4 @@ class OrderSerializer(serializers.ModelSerializer):
                 quantity=product_position_data["quantity"],
                 order=order,
             )
-
         return order
