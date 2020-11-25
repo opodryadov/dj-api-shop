@@ -50,12 +50,12 @@ Content-Type: application/json
 # оставить отзыв о товаре
 POST http://localhost:8000/api/v1/product-reviews/
 Content-Type: application/json
-Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 {
   "product": 2,
-  "text": "Вспомнил, прослезился. Шедевр! А эта змейка... Да что она себе позволяет?!",
-  "rating": 5
+  "text": "Этот телефон уже такой древний, как сами знаете что!",
+  "rating": 1
 }
 ###
 
@@ -66,22 +66,22 @@ Content-Type: application/json
 ###
 
 # изменить отзыв о товаре
-PATCH http://localhost:8000/api/v1/product-reviews/3/
+PATCH http://localhost:8000/api/v1/product-reviews/8/
 Content-Type: application/json
-Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 {
-  "product": 1,
-  "text": "Хороший смартфон, но очень дорогой.",
+  "product": 2,
+  "text": "Вполне себе хороший телефон.",
   "rating": 4
 }
 
 ###
 
 # удалить отзыв о товаре
-DELETE http://localhost:8000/api/v1/product-reviews/1/
+DELETE http://localhost:8000/api/v1/product-reviews/8/
 Content-Type: application/json
-Authorization: Token e968a27e10e4d0589cbc9035625b1e84345f5d85
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 ###
 
@@ -97,11 +97,22 @@ Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 {
-  "position_orders": [
+  "positions": [
     {
       "product_id": 1,
       "quantity": 2
+    },
+    {
+      "product_id": 2,
+      "quantity": 6
     }
   ]
 }
+###
+
+# удалить заказ
+DELETE http://localhost:8000/api/v1/orders/60/
+Content-Type: application/json
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+
 ###

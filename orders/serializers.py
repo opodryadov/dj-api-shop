@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from orders.models import Order, Position
+from orders.models import Order, ProductInOrder
 from django.contrib.auth.models import User
-
 from shop.models import Product
 
 
@@ -12,27 +11,29 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id',)
 
 
-class PositionSerializer(serializers.Serializer):
+class ProductInOrderSerializer(serializers.Serializer):
     product_id = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all(), source="product.id")
     name = serializers.CharField(source='product.name', read_only=True)
     quantity = serializers.IntegerField(min_value=1, max_value=10)
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    position_orders = PositionSerializer(many=True)
+    positions = ProductInOrderSerializer(many=True)
 
     class Meta:
         model = Order
-        fields = ('id', 'creator', 'position_orders', 'amount', 'status',)
-        read_only_fields = ('creator',)
+        fields = ('id', 'creator', 'positions', 'order_price', 'status', 'created_at', 'updated_at',)
+        read_only_fields = ('creator', 'order_price', )
 
-    def create(self, validated_data):
+    def create(self, validated_data, total_price=0):
         validated_data["creator"] = self.context["request"].user
-        order_product = validated_data.pop("position_orders")
-        order = super().create(validated_data)
-
+        order_product = validated_data.pop("positions")
         for product_position_data in order_product:
-            Position.objects.create(
+            total_price += product_position_data["product"]["id"].price * product_position_data["quantity"]
+            validated_data["order_price"] = total_price
+        order = super().create(validated_data)
+        for product_position_data in order_product:
+            ProductInOrder.objects.create(
                 product=product_position_data["product"]["id"],
                 quantity=product_position_data["quantity"],
                 order=order,

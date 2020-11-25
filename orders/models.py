@@ -1,12 +1,11 @@
-from django.core.validators import MinValueValidator
 from django.db import models
 from django.conf import settings
 from shop.models import Product
 
 
-class Position(models.Model):
-    product = models.ForeignKey(Product, related_name='position_products', on_delete=models.CASCADE)
-    order = models.ForeignKey('Order', related_name='position_orders', on_delete=models.CASCADE)
+class ProductInOrder(models.Model):
+    product = models.ForeignKey(Product, related_name='position_products', on_delete=models.CASCADE, default=None)
+    order = models.ForeignKey('Order', related_name='positions', on_delete=models.CASCADE, default=None)
     quantity = models.PositiveIntegerField(default=1)
 
 
@@ -30,8 +29,8 @@ class Order(models.Model):
         verbose_name='Покупатель',
         on_delete=models.CASCADE,
     )
-    positions = models.ManyToManyField(Product, through=Position, related_name="orders")
-    amount = models.DecimalField(max_digits=10, decimal_places=2,)
+    products = models.ManyToManyField(Product, through=ProductInOrder, related_name="orders")
+    order_price = models.DecimalField(max_digits=10, decimal_places=2,)
     status = models.CharField(max_length=20, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_NEW)
     created_at = models.DateTimeField(
         verbose_name='Создан',
