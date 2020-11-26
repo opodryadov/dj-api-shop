@@ -88,31 +88,40 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 # получить заказы
 GET http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-
+#Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 ###
 
 # отправить заказ
 POST http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 
 {
   "positions": [
     {
-      "product_id": 1,
-      "quantity": 2
-    },
-    {
       "product_id": 2,
-      "quantity": 6
+      "quantity": 2
     }
   ]
 }
 ###
 
 # удалить заказ
-DELETE http://localhost:8000/api/v1/orders/60/
+DELETE http://localhost:8000/api/v1/orders/65/
+Content-Type: application/json
+Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+
+###
+
+# изменить статус заказа
+PATCH http://localhost:8000/api/v1/orders/65/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+#Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+
+{
+  "status": "IN_PROGRESS"
+}
 
 ###
