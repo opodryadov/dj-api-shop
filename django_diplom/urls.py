@@ -20,11 +20,13 @@ from rest_framework.routers import DefaultRouter
 from orders.views import OrderViewSet
 from review.views import ReviewViewSet
 from shop.views import ProductViewSet
+from collection.views import CollectionViewSet
 
 router = DefaultRouter()
 router.register("products", ProductViewSet, basename="products")
 router.register("product-reviews", ReviewViewSet, basename="product-reviews")
 router.register("orders", OrderViewSet, basename="orders")
+router.register("product-collections", CollectionViewSet, basename="product-collections")
 
 urlpatterns = [
     path('admin/', admin.site.urls),

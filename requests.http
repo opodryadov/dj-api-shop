@@ -14,9 +14,9 @@ Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 {
-  "name": "Nokia 3310",
-  "description": "Старый добрый кирпич снова в деле",
-  "price": 3500
+  "name": "Samsung Galaxy X Edge",
+  "description": "Наконец, с нормальной батареей",
+  "price": 65000
 }
 
 ###
@@ -123,5 +123,53 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 {
   "status": "IN_PROGRESS"
 }
+
+###
+
+# посмотреть подборки
+GET http://localhost:8000/api/v1/product-collections/
+Content-Type: application/json
+
+###
+
+# создать подборку товаров
+POST http://localhost:8000/api/v1/product-collections/
+Content-Type: application/json
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+#Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+
+{
+  "title": "Мобильники! Налетай!",
+  "text": "Подборка мобильников только для тебя! От дешевых до дорогих, от старых до современных. Найди что-то для себя!",
+  "collections": [
+    {
+      "product_id": 1
+    },
+    {
+      "product_id": 2
+    }
+  ]
+}
+###
+
+# Обновить подборку товаров
+PATCH http://localhost:8000/api/v1/product-collections/1/
+Content-Type: application/json
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+#Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+
+{
+  "collections": [
+    {
+      "product_id": 3
+    }
+  ]
+}
+###
+
+# удалить подборку
+DELETE http://localhost:8000/api/v1/product-collections/8/
+Content-Type: application/json
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 ###
