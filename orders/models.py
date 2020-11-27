@@ -30,7 +30,7 @@ class Order(models.Model):
         on_delete=models.CASCADE,
     )
     products = models.ManyToManyField(Product, through=ProductInOrder, related_name="orders")
-    order_price = models.DecimalField(max_digits=10, decimal_places=2,)
+    order_price = models.DecimalField(max_digits=10, verbose_name='Стоимость заказа', decimal_places=2,)
     status = models.CharField(max_length=20, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_NEW)
     created_at = models.DateTimeField(
         verbose_name='Создан',
@@ -42,4 +42,4 @@ class Order(models.Model):
     )
 
     def __str__(self):
-        return "Заказ №%s от %s" % (self.id, self.creator)
+        return "Заказ №%s от %s на сумму %s" % (self.id, self.creator, self.order_price)
