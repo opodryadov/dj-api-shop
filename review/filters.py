@@ -1,7 +1,7 @@
 from django_filters import rest_framework as filters
 from django.contrib.auth.models import User
 from review.models import Review
-from shop.models import Product
+from product.models import Product
 
 
 class ReviewFilter(filters.FilterSet):

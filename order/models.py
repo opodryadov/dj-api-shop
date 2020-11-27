@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from shop.models import Product
+from product.models import Product
 
 
 class ProductInOrder(models.Model):
@@ -29,7 +29,7 @@ class Order(models.Model):
         verbose_name='Покупатель',
         on_delete=models.CASCADE,
     )
-    products = models.ManyToManyField(Product, through=ProductInOrder, related_name="orders")
+    products = models.ManyToManyField(Product, through=ProductInOrder, related_name="order")
     order_price = models.DecimalField(max_digits=10, verbose_name='Стоимость заказа', decimal_places=2,)
     status = models.CharField(max_length=20, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_NEW)
     created_at = models.DateTimeField(

@@ -2,9 +2,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.viewsets import ModelViewSet
-from orders.filters import OrderFilter
-from orders.models import Order
-from orders.serializers import OrderSerializer
+from order.filters import OrderFilter
+from order.models import Order
+from order.serializers import OrderSerializer
 
 
 class OrderViewSet(ModelViewSet):

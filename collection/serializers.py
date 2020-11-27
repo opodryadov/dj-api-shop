@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from collection.models import Collection, ProductInCollection
-from shop.models import Product
+from product.models import Product
 
 
 class ProductInCollectionSerializer(serializers.ModelSerializer):

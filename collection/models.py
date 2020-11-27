@@ -1,5 +1,5 @@
 from django.db import models
-from shop.models import Product
+from product.models import Product
 
 
 class ProductInCollection(models.Model):

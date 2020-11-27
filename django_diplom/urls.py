@@ -17,15 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from orders.views import OrderViewSet
+from order.views import OrderViewSet
 from review.views import ReviewViewSet
-from shop.views import ProductViewSet
+from product.views import ProductViewSet
 from collection.views import CollectionViewSet
 
 router = DefaultRouter()
 router.register("products", ProductViewSet, basename="products")
 router.register("product-reviews", ReviewViewSet, basename="product-reviews")
-router.register("orders", OrderViewSet, basename="orders")
+router.register("order", OrderViewSet, basename="order")
 router.register("product-collections", CollectionViewSet, basename="product-collections")
 
 urlpatterns = [

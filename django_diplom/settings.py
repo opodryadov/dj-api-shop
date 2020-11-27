@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
 
-    'shop',
+    'product',
     'review',
-    'orders',
+    'order',
     'collection',
 ]
 
@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'django_diplom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dj_diplom_shop',
+        'NAME': 'test',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',

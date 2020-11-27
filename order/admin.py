@@ -1,5 +1,5 @@
 from django.contrib import admin
-from orders.models import Order, ProductInOrder
+from order.models import Order, ProductInOrder
 
 
 class ProductInOrderInLine(admin.TabularInline):

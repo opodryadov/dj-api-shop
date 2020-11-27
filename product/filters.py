@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from shop.models import Product
+from product.models import Product
 
 
 class ProductFilter(filters.FilterSet):
