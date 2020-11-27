@@ -11,7 +11,7 @@ Content-Type: application/json
 # создание товара
 POST http://localhost:8000/api/v1/products/
 Content-Type: application/json
-Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 
 {
   "name": "Samsung Galaxy X Edge",
@@ -66,9 +66,10 @@ Content-Type: application/json
 ###
 
 # изменить отзыв о товаре
-PATCH http://localhost:8000/api/v1/product-reviews/8/
+PATCH http://localhost:8000/api/v1/product-reviews/9/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+#Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 
 {
   "product": 2,

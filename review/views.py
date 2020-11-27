@@ -11,20 +11,14 @@ class ReviewPermissions(permissions.BasePermission):
     def has_permission(self, request, view):
         if request.method == 'GET':
             return True
-        if request.method == 'POST':
-            if request.user.is_authenticated:
+        if request.user.is_authenticated:
+            if request.method == 'POST':
                 return True
-            else:
-                return False
-        if request.method == 'PUT' or request.method == 'PATCH' or request.method == 'DELETE':
-            if request.user.is_authenticated:
+            if request.method in ['PUT', 'PATCH', 'DELETE']:
                 review = Review.objects.get(id=request.parser_context['kwargs']['pk'])
                 if review.creator.username == request.user.username:
                     return True
-                else:
-                    return False
-            else:
-                return False
+        return []
 
 
 class ReviewViewSet(ModelViewSet):
