@@ -53,9 +53,9 @@ Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 {
-  "product": 2,
-  "text": "Этот телефон уже такой древний, как сами знаете что!",
-  "rating": 1
+  "product": 3,
+  "text": "Батарейка все же подводит... А так более-менее",
+  "rating": 4
 }
 ###
 
@@ -101,8 +101,8 @@ Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 {
   "positions": [
     {
-      "product_id": 2,
-      "quantity": 2
+      "product_id": 3,
+      "quantity": 4
     }
   ]
 }
@@ -154,7 +154,7 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 ###
 
 # Обновить подборку товаров
-PATCH http://localhost:8000/api/v1/product-collections/11/
+PATCH http://localhost:8000/api/v1/product-collections/12/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 #Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
@@ -169,7 +169,7 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 ###
 
 # удалить подборку
-DELETE http://localhost:8000/api/v1/product-collections/10/
+DELETE http://localhost:8000/api/v1/product-collections/11/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
