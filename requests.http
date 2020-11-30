@@ -80,9 +80,10 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 ###
 
 # удалить отзыв о товаре
-DELETE http://localhost:8000/api/v1/product-reviews/8/
+DELETE http://localhost:8000/api/v1/product-reviews/12/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
+#Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 
 ###
 
@@ -109,9 +110,10 @@ Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
 ###
 
 # удалить заказ
-DELETE http://localhost:8000/api/v1/orders/65/
+DELETE http://localhost:8000/api/v1/orders/67/
 Content-Type: application/json
-Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+#Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
+Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
 ###
 
@@ -154,7 +156,7 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 ###
 
 # Обновить подборку товаров
-PATCH http://localhost:8000/api/v1/product-collections/12/
+PATCH http://localhost:8000/api/v1/product-collections/17/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 #Authorization: Token 865eb6cca3a2dc907aca40babc680dc59b550574
@@ -169,7 +171,7 @@ Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 ###
 
 # удалить подборку
-DELETE http://localhost:8000/api/v1/product-collections/11/
+DELETE http://localhost:8000/api/v1/product-collections/17/
 Content-Type: application/json
 Authorization: Token cbd4d3f17636273ed8b77935cf5c8dd7566c53b1
 
